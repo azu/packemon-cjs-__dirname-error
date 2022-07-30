@@ -1,0 +1,50 @@
+{
+  "name": "packemon-cjs-__dirname-error",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "packemon pack --addEngines --addExports --declaration --declarationConfig tsconfig.json",
+    "t": "tsc"
+  },
+  "author": "azu",
+  "license": "MIT",
+  "devDependencies": {
+    "packemon": "^2.3.2",
+    "typescript": "^4.7.4"
+  },
+  "packemon": [
+    {
+      "inputs": {
+        "node": "./src/index.ts"
+      },
+      "platform": "node",
+      "format": "mjs"
+    }
+  ],
+  "engines": {
+    "node": ">=14.15.0",
+    "npm": ">=6.14.0"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    "./*": {
+      "types": "./dts/*.d.ts",
+      "node": {
+        "import": "./mjs/*.mjs"
+      }
+    },
+    ".": {
+      "types": "./dts/index.d.ts",
+      "node": {
+        "import": "./mjs/index.mjs"
+      }
+    }
+  },
+  "files": [
+    "dts/**/*.d.ts",
+    "mjs/**/*.{mjs,map}",
+    "src/**/*.{ts,tsx,json}"
+  ]
+}
